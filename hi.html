@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Happy Valentine's Day, My Love ❤️</title>
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--pink: #ffd1dc;
+			--lavender: #e6e6fa;
+			--white: #fff;
+			--accent: #ffb6b9;
+			--shadow: 0 4px 24px 0 rgba(255, 182, 185, 0.15);
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+		body {
+			margin: 0;
+			font-family: 'Quicksand', Arial, sans-serif;
+			background: linear-gradient(135deg, var(--pink) 0%, var(--lavender) 100%);
+			min-height: 100vh;
+			color: #a14a76;
+			overflow-x: hidden;
+		}
+		.floating-hearts {
+			position: fixed;
+			top: 0; left: 0; width: 100vw; height: 100vh;
+			pointer-events: none;
+			z-index: 1;
+		}
+		.heart {
+			position: absolute;
+			width: 32px; height: 32px;
+			background: linear-gradient(135deg, #ffb6b9 60%, #fff0f5 100%);
+			border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+			transform: rotate(-45deg);
+			opacity: 0.7;
+			animation: float 8s linear infinite;
+			box-shadow: 0 2px 8px #ffb6b944;
+		}
+		.heart:before, .heart:after {
+			content: '';
+			position: absolute;
+			width: 32px; height: 32px;
+			background: inherit;
+			border-radius: 50%;
+		}
+		.heart:before {
+			top: -16px; left: 0;
+		}
+		.heart:after {
+			left: 16px; top: 0;
+		}
+		@keyframes float {
+			0% { transform: translateY(0) scale(1) rotate(-45deg); opacity: 0.7; }
+			80% { opacity: 0.7; }
+			100% { transform: translateY(-100vh) scale(1.2) rotate(-45deg); opacity: 0; }
+		}
+		.container {
+			max-width: 700px;
+			margin: 0 auto;
+			padding: 32px 16px 64px 16px;
+			position: relative;
+			z-index: 2;
+		}
+		header {
+			text-align: center;
+			margin-bottom: 32px;
+		}
+		.headline {
+			font-family: 'Pacifico', cursive;
+			font-size: 2.5rem;
+			color: #d72660;
+			text-shadow: 0 2px 12px #fff6fa, 0 1px 0 #fff;
+			margin-bottom: 0.5em;
+			animation: fadeInDown 1.2s cubic-bezier(.77,0,.18,1) both;
+		}
+		@keyframes fadeInDown {
+			0% { opacity: 0; transform: translateY(-40px); }
+			100% { opacity: 1; transform: translateY(0); }
+		}
+		.fade-in {
+			opacity: 0;
+			animation: fadeIn 1.5s ease forwards;
+		}
+		.fade-in.delay-1 { animation-delay: 0.5s; }
+		.fade-in.delay-2 { animation-delay: 1s; }
+		.fade-in.delay-3 { animation-delay: 1.5s; }
+		@keyframes fadeIn {
+			to { opacity: 1; }
+		}
+		section {
+			background: var(--white);
+			border-radius: 24px;
+			box-shadow: var(--shadow);
+			margin-bottom: 28px;
+			padding: 28px 20px 20px 20px;
+			transition: box-shadow 0.3s;
+		}
+		section h2 {
+			font-family: 'Pacifico', cursive;
+			color: #d72660;
+			font-size: 1.5rem;
+			margin-top: 0;
+		}
+		.gallery {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 16px;
+			justify-content: center;
+		}
+		.gallery-card {
+			background: var(--lavender);
+			border-radius: 18px;
+			box-shadow: 0 2px 12px #e6e6fa55;
+			overflow: hidden;
+			width: 140px;
+			transition: transform 0.2s, box-shadow 0.2s;
+		}
+		.gallery-card img {
+			width: 100%;
+			display: block;
+			aspect-ratio: 1/1;
+			object-fit: cover;
+		}
+		.gallery-card:hover {
+			transform: scale(1.04) rotate(-2deg);
+			box-shadow: 0 6px 24px #ffb6b955;
+		}
+		.quote {
+			font-family: 'Pacifico', cursive;
+			font-size: 1.3rem;
+			color: #a14a76;
+			text-align: center;
+			margin: 18px 0 0 0;
+			letter-spacing: 0.5px;
+		}
+		.heart-btn {
+			display: inline-block;
+			margin: 24px auto 0 auto;
+			padding: 14px 36px;
+			font-size: 1.1rem;
+			font-family: 'Quicksand', Arial, sans-serif;
+			color: #fff;
+			background: linear-gradient(90deg, #ffb6b9 60%, #e6e6fa 100%);
+			border: none;
+			border-radius: 32px;
+			box-shadow: 0 2px 12px #ffb6b955;
+			cursor: pointer;
+			transition: box-shadow 0.2s, background 0.2s;
+			position: relative;
+			font-weight: 700;
+			outline: none;
+			animation: glow 2s infinite alternate;
+		}
+		@keyframes glow {
+			from { box-shadow: 0 2px 12px #ffb6b955; }
+			to { box-shadow: 0 4px 32px #ffb6b9cc; }
+		}
+		.heart-btn:active {
+			background: linear-gradient(90deg, #e6e6fa 60%, #ffb6b9 100%);
+		}
+		.hidden-message {
+			max-height: 0;
+			overflow: hidden;
+			opacity: 0;
+			transition: max-height 1s cubic-bezier(.77,0,.18,1), opacity 1s cubic-bezier(.77,0,.18,1);
+			background: var(--lavender);
+			border-radius: 18px;
+			margin-top: 18px;
+			padding: 0 18px;
+			box-shadow: 0 2px 12px #e6e6fa55;
+		}
+		.hidden-message.show {
+			max-height: 300px;
+			opacity: 1;
+			padding: 18px;
+		}
+		.music {
+			display: none;
+		}
+		@media (max-width: 600px) {
+			.container { padding: 18px 2vw 48px 2vw; }
+			.headline { font-size: 1.5rem; }
+			section { padding: 16px 8px 12px 8px; }
+			.gallery-card { width: 44vw; min-width: 110px; }
+		}
+	</style>
+</head>
+<body>
+	<div class="floating-hearts" id="hearts"></div>
+	<div class="container">
+		<header>
+			<div class="headline">Happy Valentine’s Day, My Love ❤️</div>
+		</header>
+		<section class="fade-in delay-1">
+			<h2>My Heartfelt Message</h2>
+			<p>To the most wonderful girl in my world,<br><br>
+			Thank you for filling my days with laughter, warmth, and endless love. You are my sunshine, my comfort, and my best friend. I am grateful for every moment we share, every smile you bring, and every dream we build together. I love you more than words can ever say.</p>
+		</section>
+		<section class="fade-in delay-2">
+			<h2>Why You’re Special to Me</h2>
+			<ul>
+				<li>Your kindness melts my heart.</li>
+				<li>Your smile brightens my darkest days.</li>
+				<li>Your laughter is my favorite melody.</li>
+				<li>Your love makes me feel complete.</li>
+				<li>You inspire me to be my best self.</li>
+			</ul>
+		</section>
+		<section class="fade-in delay-3">
+			<h2>Our Beautiful Memories</h2>
+			<ul>
+				<li>Our first date and the butterflies I felt.</li>
+				<li>Late-night talks and silly jokes.</li>
+				<li>Adventures, cuddles, and shared dreams.</li>
+				<li>Every hug, every kiss, every moment together.</li>
+			</ul>
+		</section>
+		<section class="fade-in delay-3">
+			<h2>Reasons I Smile Because of You</h2>
+			<ul>
+				<li>You believe in me, always.</li>
+				<li>Your love is my safe place.</li>
+				<li>You make every day feel special.</li>
+				<li>Your silly faces and sweet surprises.</li>
+				<li>Because you are you, and I am so lucky.</li>
+			</ul>
+		</section>
+		<section class="fade-in delay-3">
+			<h2>Our Photo Gallery</h2>
+			<div class="gallery">
+				<div class="gallery-card"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Memory 1"></div>
+				<div class="gallery-card"><img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Memory 2"></div>
+				<div class="gallery-card"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Memory 3"></div>
+				<div class="gallery-card"><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Memory 4"></div>
+			</div>
+		</section>
+		<section class="fade-in delay-3">
+			<div class="quote">“I look at you and see the rest of my life in front of my eyes.”</div>
+		</section>
+		<div style="text-align:center;">
+			<button class="heart-btn" id="revealBtn">Click to See My Heart 💌</button>
+			<div class="hidden-message" id="hiddenMsg">
+				<h2 style="margin-top:0; color:#d72660; font-family:'Pacifico',cursive;">My Heart for You</h2>
+				<p style="font-size:1.1rem;">You are my everything. I promise to cherish, adore, and love you more with every beat of my heart. Forever yours. 💖</p>
+			</div>
+		</div>
+	</div>
+	<audio class="music" id="bgMusic" src="https://cdn.pixabay.com/audio/2022/10/16/audio_12b5b6b7e2.mp3" autoplay loop></audio>
+	<script>
+		// Floating hearts animation
+		const heartsContainer = document.getElementById('hearts');
+		function createHeart() {
+			const heart = document.createElement('div');
+			heart.className = 'heart';
+			heart.style.left = Math.random() * 100 + 'vw';
+			heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+			heart.style.opacity = 0.5 + Math.random() * 0.5;
+			heart.style.transform = `scale(${0.7 + Math.random() * 0.6}) rotate(-45deg)`;
+			heartsContainer.appendChild(heart);
+			setTimeout(() => heart.remove(), 9000);
+		}
+		setInterval(createHeart, 700);
+
+		// Reveal hidden message
+		const revealBtn = document.getElementById('revealBtn');
+		const hiddenMsg = document.getElementById('hiddenMsg');
+		revealBtn.addEventListener('click', () => {
+			hiddenMsg.classList.toggle('show');
+			if(hiddenMsg.classList.contains('show')) {
+				revealBtn.textContent = 'Close My Heart 💖';
+			} else {
+				revealBtn.textContent = 'Click to See My Heart 💌';
+			}
+		});
+
+		// Fade-in on scroll
+		function fadeInOnScroll() {
+			document.querySelectorAll('.fade-in').forEach(el => {
+				const rect = el.getBoundingClientRect();
+				if(rect.top < window.innerHeight - 60) {
+					el.style.opacity = 1;
+				}
+			});
+		}
+		window.addEventListener('scroll', fadeInOnScroll);
+		window.addEventListener('DOMContentLoaded', fadeInOnScroll);
+
+		// Soft background music autoplay (handle browser restrictions)
+		window.addEventListener('DOMContentLoaded', () => {
+			const music = document.getElementById('bgMusic');
+			const playMusic = () => {
+				music.play().catch(()=>{});
+				document.body.removeEventListener('click', playMusic);
+			};
+			document.body.addEventListener('click', playMusic);
+		});
+	</script>
+</body>
+</html>
